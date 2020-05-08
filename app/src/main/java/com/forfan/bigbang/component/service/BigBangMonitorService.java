@@ -95,6 +95,8 @@ public class BigBangMonitorService extends AccessibilityService {
 
     private List<String> floatWhiteList;
     private RunningTaskUtil mRunningTaskUtil;
+    // Snowf Add: 2020-4-1
+    public static boolean isSetup = false;
 
     String back ;
     String home ;
@@ -363,12 +365,16 @@ public class BigBangMonitorService extends AccessibilityService {
                 }
                 return;
             }
-            Intent intent=new Intent(this, BigBangActivity.class);
-            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra(BigBangActivity.TO_SPLIT_STR,txt.toString());
+            // Snowf Modify:
+            if (!isSetup) {
+                Intent intent = new Intent(this, BigBangActivity.class);
+                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(BigBangActivity.TO_SPLIT_STR, txt.toString());
 //            startActivity(intent);
-            //放到ArcTipViewController中触发试试
-            ArcTipViewController.getInstance().showTipViewForStartActivity(intent);
+                //放到ArcTipViewController中触发试试
+                ArcTipViewController.getInstance().showTipViewForStartActivity(intent);
+            }
+            ToastUtil.show(txt.toString());
         }
     }
 

@@ -54,7 +54,7 @@ public class PickWordFragment extends BaseRecyclerFragment {
         cardViews.add(new GoToSettingCard(getActivity()));
         cardViews.add(new FunctionSettingCard(getActivity()));
         if (XposedEnableUtil.isEnable()) {
-            cardViews.add(new XposedCard(getActivity()));
+            // cardViews.add(new XposedCard(getActivity()));
         }
         if (SPHelper.getBoolean(ConstantUtil.MONITOR_CLICK, true) && !XposedEnableUtil.isEnable()) {
             cardViews.add(settingCard);

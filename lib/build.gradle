@@ -19,7 +19,9 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 signing {
-    sign configurations.archives
+    if(project.hasProperty("SIGNING")){
+        sign configurations.archives
+    }
 }
 
 // Group ID is the project name

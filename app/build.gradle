@@ -15,11 +15,11 @@ def releaseTime() {
 }
 
 def keystoreFilepath = ''
-def keystorePSW = ''
-def keystoreAlias = ''
-def keystoreAliasPSW = ''
+def keystorePSW = '123456'
+def keystoreAlias = 'yuedandebug'
+def keystoreAliasPSW = '123456'
 // default keystore file, PLZ config file path in local.properties
-def keyfile = file('s.keystore.temp')
+def keyfile = file('D:/yueshouyindebug.jks')
 
 Properties properties = new Properties()
 // local.properties file in the root director
@@ -88,7 +88,8 @@ android {
                     if (outputFile.name.contains("release")) {
                         if (outputFile != null && outputFile.name.endsWith('.apk')) {
                             // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
-                            def fileName = "BigBang_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                            //def fileName = "yuedan_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                            def fileName = "yuedan_v${defaultConfig.versionName}_${releaseTime()}_default.apk"
                             output.outputFile = new File(outputFile.parent, fileName)
                         }
                     }
@@ -101,28 +102,28 @@ android {
     }
     // 友盟多渠道打包
     productFlavors {
-        wandoujia {}
-        _360 {}
-        baidu {}
-        taobao {}
-        QQ {}
-        google {
-
-        }
-//        _3G {}
-        _91 {}
-        hiapk {}
-//        gfan {}
-        goapk {}
-//        appChina {}
-        eoe {}
-        xiaomi {}
-        meizu {}
-        coolapk {}
-        xposed{
-            applicationId "com.forfan.bigbang.coolapk"
-        }
-        for_test {}
+//        wandoujia {}
+//        _360 {}
+//        baidu {}
+//        taobao {}
+//        QQ {}
+//        google {
+//
+//        }
+////        _3G {}
+//        _91 {}
+//        hiapk {}
+////        gfan {}
+//        goapk {}
+////        appChina {}
+//        eoe {}
+//        xiaomi {}
+//        meizu {}
+//        coolapk {}
+//        xposed{
+//            applicationId "com.forfan.bigbang.coolapk"
+//        }
+//        for_test {}
     }
 
     productFlavors.all { flavor ->
@@ -231,8 +232,8 @@ dependencies {
     compile files('libs/AndroidScreenCap.jar')
     compile project(':lib')
     compile files('libs/copy.jar')
-    xposedCompile project(':xposed')
-    provided 'de.robv.android.xposed:api:82'
+    //xposedCompile project(':xposed')
+    //provided 'de.robv.android.xposed:api:82'
     compile project(':commonjar')
     compile project(':colorpicker')
     compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
